@@ -1,8 +1,9 @@
 header {
-	height: 60px;
+	height: 1000px;
 	text-align: center;
 	position: fixed;
 	width: 100%;
+	background-color: #111;
 }
 
 header ul {
