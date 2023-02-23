@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>部屋の追加/編集ページ</title>
 </head>
 <body>
-    
+    <form action="アプロード先サーバー名を後で入力" method="post" enctype="multipart/form-data">
+        <label for="filename">間取図の画像を挿入してください</label>
+        <input type="file" id="filename" name="filename">
+        <button>アップロード</button>
+    </form>
 </body>
 </html>
