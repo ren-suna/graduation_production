@@ -10,7 +10,7 @@ app = Flask(__name__)
 # /にアクセスしたら
 def test():
    
-    return render_template("base.html")
+    return render_template("R.main.html")
 # index.htmlを使って　HTMLを生成
 
 
