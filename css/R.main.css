@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 3画面化----------- */
 .base {
   display: flex;
   flex-direction: row;
