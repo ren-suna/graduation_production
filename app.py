@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/test")
 # /にアクセスしたら
 def test():
-    return render_template("base.html")
+    return render_template("R.main.html")
 # index.htmlを使って　HTMLを生成
 
 if __name__ == "__main__":
