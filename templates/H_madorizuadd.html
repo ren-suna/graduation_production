@@ -14,8 +14,20 @@
             間取図の画像を挿入してください
         </label>
         <input type="file" id="filename" name="filename" accept=".png, .jpg, .jpeg, .pdf, .doc">
-        <button>保存</button>
+        <button id="save">保存</button>
+        
     </form>
     <button>寸法追加</button>
+
 </body>
+
+
+
+    
+<script>
+    document.getElementById("save").addEventListener("click",saved);
+    function saved(){
+        alert("保存しました");
+    }
+</script>
 </html>
