@@ -10,7 +10,7 @@ app=Flask(__name__)
 @app.route("/")
 def test():
     print(test)
-    return render_template("R.main.html")
+    return render_template("M_top.html")
 
 
     #Flask実行（ターミナルでflask実行できなかったので）
