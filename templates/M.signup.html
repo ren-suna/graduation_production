@@ -27,15 +27,20 @@
          <tr>
             <td>メールアドレス</td>
             <td><input type="text"></td>
-            <td><input type="text"></td>
          </tr><br>
          <tr>
             <td>Passwprd</td>
             <td><input type="text"></td>
-            <td><input type="text"></td>
          </tr><br>
         </table>
-        <button type="submit">保存</button><button type="submit">全削除</button>
+        <button id="save" type="submit">保存</button><button type="submit">全削除</button>
 
 </body>
+
+    <script>
+      document.getElementById("save").addEventListener("click",saved);
+      function saved(){
+          alert("保存しました");
+      }
+  </script>
 </html>
