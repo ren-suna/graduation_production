@@ -9,32 +9,35 @@
 <body style="background-color: #fff1dc;">
     <div>
         <table border="0.8">
-        <tr>
-            <td>名前</td>
-            <td><input type="text" name="name"></td>
-         </tr><br>
-         <tr>
-            <td>カナ</td>
-            <td><input type="text"></td>
-         </tr><br>
-         <tr>
-            <td>ID</td>
-            <td><input type="text" name="USER_ID"></td>
-         </tr><br>
-         <tr>
-            <td>Passwprd</td>
-            <td><input type="text" name="password"></td>
-         </tr><br>
-         <tr>
-            <td>メールアドレス</td>
-            <td><input type="text" name="mailadress"></td>
-         </tr><br>
+            <form action="/regist" method="post">
+            <tr>
+               <td>名前</td>
+               <td><input type="text" name="name" id=""></td>
+            </tr><br>
+            <tr>
+               <td>カナ</td>
+               <td><input type="text"></td>
+            </tr><br>
+            <tr>
+               <td>ID</td>
+               <td><input type="text" name="USER_ID" id=""></td>
+            </tr><br>
+            <tr>
+               <td>Passwprd</td>
+               <td><input type="text" name="password" id=""></td>
+            </tr><br>
+            <tr>
+               <td>メールアドレス</td>
+               <td><input type="text" name="mailadress" id=""></td>
+            </tr><br>
+          
 
         </table>
-        <form action="/regist" method="post">
-            <input type="submit" id="save" value="保存">
-        </form>
-        <form action="/regist_top" method="post">
+               <input type="submit" id="save" value="保存">
+            </form>
+               
+            
+        <form action="/regist_top" method="get">
             <input type="submit" value="やり直し">
         </form>
 </body>

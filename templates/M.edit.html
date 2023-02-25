@@ -9,65 +9,51 @@
 <body style="background-color: #fff1dc;">
     <article>
         <div>
-            <table border="0.5">
-            <tr>
-                <img src="/png/chair.png"><td>名称</td>
-                <td>縦</td>
-                <td>横</td>
-                <td>数量</td>
-             </tr><br>
-            <tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr>
-            <tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr><tr>
-                <td><input type="text"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-                <td><input type="integer"></td>
-            </tr>
-            
-            </table>
+            <form action="/regist_f" method="post">
+                <table border="0.5">
+                    <tr>
+                        <td>名称</td>
+                        <td>縦</td>
+                        <td>横</td>
+                        <td>数量</td>
+                    </tr><br>
+                    <tr>
+                        <td><input type="text" name="f_name" id=""></td>
+                        <td><input type="text" name="f_vertical" id=""></td>
+                        <td><input type="text" name="f_horizontal" id=""></td>
+                        <td><input type="text" name="f_height" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="f_name" id=""></td>
+                        <td><input type="text" name="f_vertical" id=""></td>
+                        <td><input type="text" name="f_horizontal" id=""></td>
+                        <td><input type="text" name="f_height" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="f_name" id=""></td>
+                        <td><input type="text" name="f_vertical" id=""></td>
+                        <td><input type="text" name="f_horizontal" id=""></td>
+                        <td><input type="text" name="f_height" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="f_name" id=""></td>
+                        <td><input type="text" name="f_vertical" id=""></td>
+                        <td><input type="text" name="f_horizontal" id=""></td>
+                        <td><input type="text" name="f_height" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="integer"></td>
+                        <td><input type="integer"></td>
+                        <td><input type="integer"></td>
+                    </tr>
+                </table>
+                <input id="save" type="submit" value="保存"></input>
+            </form>
+
             
         </div>
-        <button id="save" type="submit">保存</button>
+        
     </article>
         <script>
             document.getElementById("save").addEventListener("click",saved);
