@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.base {
+/* .base {
   display: flex;
   flex-direction: row;
   width: 100vw;
@@ -14,4 +14,22 @@
   display: flex;
   flex-direction: column;
   width: 30%;
+} */
+
+
+#r {
+  background-color: yellowgreen;
+}
+
+.mypage {
+  background-color: rgb(131, 131, 249);
+}
+
+.room {
+  display: block;
+}
+
+.copyright {
+  text-align: center;
+  background-color: #3A98B9;
 }
