@@ -67,7 +67,13 @@
             </table>
             
         </div>
-        <button type="submit">保存</button>
+        <button id="save" type="submit">保存</button>
     </article>
+        <script>
+            document.getElementById("save").addEventListener("click",saved);
+            function saved(){
+                alert("保存しました");
+            }
+        </script>
 </body>
 </html>

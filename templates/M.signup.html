@@ -11,31 +11,38 @@
         <table border="0.8">
         <tr>
             <td>名前</td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" name="name"></td>
          </tr><br>
          <tr>
             <td>カナ</td>
             <td><input type="text"></td>
-            <td><input type="text"></td>
          </tr><br>
          <tr>
             <td>ID</td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-         </tr><br>
-         <tr>
-            <td>メールアドレス</td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" name="USER_ID"></td>
          </tr><br>
          <tr>
             <td>Passwprd</td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" name="password"></td>
          </tr><br>
-        </table>
-        <button type="submit">保存</button><button type="submit">全削除</button>
+         <tr>
+            <td>メールアドレス</td>
+            <td><input type="text" name="mailadress"></td>
+         </tr><br>
 
+        </table>
+        <form action="/regist" method="post">
+            <input type="submit" id="save" value="保存">
+        </form>
+        <form action="/regist_top" method="post">
+            <input type="submit" value="やり直し">
+        </form>
 </body>
+
+    <script>
+      document.getElementById("save").addEventListener("click",saved);
+      function saved(){
+          alert("保存しました");
+      }
+  </script>
 </html>
