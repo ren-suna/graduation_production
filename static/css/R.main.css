@@ -22,11 +22,11 @@
 }
 
 .mypage {
-  background-color: rgb(131, 131, 249);
+  background-color: rgb(226, 238, 131);
 }
 
-.room {
-  display: block;
+.navbar {
+    background-color: #3A98B9;
 }
 
 .copyright {
