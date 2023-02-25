@@ -17,11 +17,14 @@
 			<h1>俺の"部屋"</h1>
 		</section>
 
-		<section class="clip">
-			<h1>ログインID<input type="integer" name="post_id" size="200"></h1> 
-			<h1>PW <input type="text" name="post_name" size="200"></h1>
-			<h1>新規会員登録は<a href="http://127.0.0.1:9000/regist_top">こちら</a></h1> 
-		</section>
+		<form action="/login" method="post">
+			<section class="clip">
+				<h1>ログインID<input type="integer" name="post_id" size="50"></h1> 
+				<h1>PW <input type="text" name="post_pass" size="50"></h1>
+				<input type="submit" value="ログイン">
+				<h1>新規会員登録は<a href="http://127.0.0.1:9000/regist_top">こちら</a></h1> 
+			</section>
+		</form>
 	</article>
 
 </body>
