@@ -71,6 +71,7 @@ def furniture():
     
     print(v1)
 
+
     c.execute('INSERT INTO my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height) VALUES (?,?,?,?)', (v1,v2,v3,v4))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
     conn.commit()
