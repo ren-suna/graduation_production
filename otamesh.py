@@ -61,18 +61,35 @@ def regist_post():
 @app.route("/login", methods=["POST"])
 def login_post():
     conn = sqlite3.connect('graduate.db')
-    v1 = request.form.get('post_id')
-    v2 = request.form.get('post_pass')
+    v1 = request.form.get('post_pass')
+    v2 = request.form.get('post_id')
+    
     c = conn.cursor()
     print(v1)
     print(v2)
     # 以下未完成
-    c.execute('SELECT * FROM users')
-    c.fetchall()
+    c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
+    result = c.fetchall()
+    print(result)
     
-    conn.close()
+    if result == []:
+        return redirect("/top")
+    else:
+        print("ログインに成功しました")
 
-    return render_template("R.main.html")
+    conn.close()
+    return render_template("R.main.html", name=result[0][1] )
+
+
+
+# @app.route('/main')
+# def main():
+#     conn = sqlite3.connect('graduate.db')
+#     c = conn.cursor()
+#     c.execute('SELECT * FROM users WHERE name')
+#     result = c.fetchall()
+#     py_name = int(result)
+
 
 
 # 以下家具編集
