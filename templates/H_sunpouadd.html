@@ -14,7 +14,9 @@
     <button type="button" class="left_rigth" onclick="insert_sayu()"> <img src="static\img\左右矢印.png" height ="90" width="90" /></button>
     <button type="button" class="turn_left"> <img src="static\img\左回転矢印.png" height ="90" width="90" /></button>
     <button type="button" class="turn_right"> <img src="static\img\右回転矢印.png" height ="90" width="90" /></button>
-    <button>保存</button>
+    <form action="/save_s">
+    <button id="save" type="submit">保存</button>
+    </form>
 
 <div id="image">
 </div>   
@@ -27,4 +29,10 @@
 
 <script src="../static/canvas.js"></script>
 </body>
+<script>
+    document.getElementById("save").addEventListener("click",saved);
+    function saved(){
+        alert("保存しました");
+    }
+</script>
 </html>
