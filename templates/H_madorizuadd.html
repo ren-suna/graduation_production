@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,15 @@
     <title>部屋の追加/編集ページ</title>
     <link rel="stylesheet" href="../static/css/H_madorizuadd.css">
 </head>
+
 <body style="background-color: #fff1dc;">
+    {% extends 'R.header.html' %}
+    {% block content %}
 
 
-<h1>「ファイルを選択」から間取図を追加してください</h1>
 
-<div class = "madoriwaku">
-<img id="preview">
-</div>
+    <h1>「ファイルを選択」から間取図を追加してください</h1>
+
 
 <form action="/upload" method="post" enctype="multipart/form-data">
     
@@ -25,25 +27,34 @@
     <input type="submit" value ="アップロード">
     </div>
 
-</form>
 
-<form action="/r_regist" method="get">
-<div class = "button">
-    <button>寸法追加</button>
-</div>
-</form>
+        <div class="button">
+            <button>アップロード</button>
+        </div>
 
-<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-<script src="../static/madorizuadd.js"></script>
+    </form>
+
+    <form action="/r_regist" method="get">
+        <div class="button">
+            <button>寸法追加</button>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="../static/madorizuadd.js"></script>
 
 
 </body>
 
-    
+{% endblock %}
+
+
 <script>
-    document.getElementById("save").addEventListener("click",saved);
-    function saved(){
+    document.getElementById("save").addEventListener("click", saved);
+    function saved() {
         alert("保存しました");
     }
 </script>
+
 </html>
