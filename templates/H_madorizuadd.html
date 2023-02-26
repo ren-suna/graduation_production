@@ -16,12 +16,11 @@
 <img id="preview">
 </div>
 
-<form action="アプロード先サーバー名を後で入力" method="post" enctype="multipart/form-data">
+<form action="/upload" method="post" enctype="multipart/form-data">
     
     <div class = "button">
-    <input type="file" id="myImage" accept="image/*">
+    <input type="file" name="upload" id="myImage" accept="image/*">
     </div>
-
     <div class = "button">
     <button>アップロード</button>
     </div>
@@ -39,8 +38,6 @@
 
 
 </body>
-
-
 
     
 <script>
