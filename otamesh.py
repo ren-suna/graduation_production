@@ -4,8 +4,11 @@ from flask import render_template
 from flask import redirect
 import sqlite3
 from flask import request
+from flask import session
 # flaskを使うときのお約束
 app = Flask(__name__)
+
+app.secret_key ='orenoheya'
 
 @app.route("/top")
 def top():
@@ -50,6 +53,7 @@ def regist_post():
     c = conn.cursor()
    
     c.execute('INSERT INTO users (name,USER_ID,password,mailadress) VALUES (?,?,?,?)', (v1,v2,v3,v4))
+    c.execute('INSERT INTO my_furnitutes (USER_ID) VALUES (?)', (v2))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
     conn.commit()
     conn.close()
@@ -76,10 +80,16 @@ def login_post():
     if result == []:
         return redirect("/top")
     else:
+        session ['user_id'] = result[0][0]
         print("ログインに成功しました")
-
+    
+    print(session['user_id'])
     conn.close()
     return render_template("R.main.html", name=result[0][1])
+
+# @app.route('/bbs')
+# def bbs():
+
 
 
 
