@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect,request,session
 import os
 import sqlite3
 # CGIモジュールのインポート
@@ -23,16 +23,16 @@ def do_upload():
     filename = upload.filename
     upload.save(os.path.join(save_path,filename))
 
-    user_id = session['user_id']
+    user_id = session['USER_ID']
     conn = sqlite3.connect('graduate.db')
     c = conn.cursor()
     # update文
     # 上記の filename 変数ここで使うよ
-    c.execute("update user set prof_img = ? where id=?", (filename,user_id))
+    c.execute("INSERT INTO my_furnitutes (room_no,room_picture) VALUES (filename,join(save_path,filename))")
     conn.commit()
     conn.close()
     return redirect ('/H_madorizuadd')
 
 def get_save_path():
-    path_dir = "./static/img"
+    path_dir = ".static/img"
     return path_dir
