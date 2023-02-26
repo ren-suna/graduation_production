@@ -33,3 +33,11 @@
   text-align: center;
   background-color: #3A98B9;
 }
+
+/* header css */
+.navbar-brand1 {
+	font-family: 'Yuji Mai', serif;
+  font-size: 150%;
+  color:inherit;
+  text-decoration: none;
+}
