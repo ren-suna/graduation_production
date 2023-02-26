@@ -49,12 +49,25 @@ def regist_post():
     c = conn.cursor()
    
     c.execute('INSERT INTO users (name,USER_ID,password,mailadress) VALUES (?,?,?,?)', (v1,v2,v3,v4))
+    c.execute('INSERT INTO my_furnitutes (USER_ID) VALUES (?)', (v2))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
     conn.commit()
     conn.close()
     
     return render_template("M_top.html")
 
+# @app.route("/regist_f", methods=["POST"])
+# def regist_f():
+#     conn = sqlite3.connect('graduate.db')
+#     v1 = request.form.get('USER_ID')
+#     c = conn.cursor()
+   
+#     c.execute('INSERT INTO my_furnitutes (USER) VALUES ?', (v1))
+#     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
+#     conn.commit()
+#     conn.close()
+    
+#     return render_template("M_top.html")
 
 
 # 以下ログイン
