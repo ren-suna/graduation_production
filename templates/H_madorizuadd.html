@@ -17,15 +17,16 @@
 
     <h1>「ファイルを選択」から間取図を追加してください</h1>
 
-    <div class="madoriwaku">
-        <img id="preview">
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    
+    <div class = "button">
+    <input type="file" name="upload" id="myImage" accept="image/*">
+    </div>
+    <div class = "button">
+    <button>アップロード</button>
     </div>
 
-    <form action="アプロード先サーバー名を後で入力" method="post" enctype="multipart/form-data">
-
-        <div class="button">
-            <input type="file" id="myImage" accept="image/*">
-        </div>
 
         <div class="button">
             <button>アップロード</button>
@@ -47,7 +48,6 @@
 </body>
 
 {% endblock %}
-
 
 
 <script>
