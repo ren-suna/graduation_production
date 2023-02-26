@@ -23,9 +23,14 @@
             <div class="mypage">
                 <h2>〇〇さんのマイページ</h2>
                 <div class="d-grid gap-2 d-md-block">
-                    <button class="btn btn-primary" type="button">部屋追加</button>
-                    <button class="btn btn-primary" type="button">家具追加</button>
+                    <form action="/rooms" method="get">
+                    <button class="btn btn-primary" type="submit">部屋追加</button>
+                    </form>
+                    <form action="/furnitures" method="get">
+                    <button class="btn btn-primary" type="submit">家具追加</button>
+                    </form>
                     <button class="btn btn-primary" type="button">シミュレーション</button>
+                    
                 </div>
             </div>
 
