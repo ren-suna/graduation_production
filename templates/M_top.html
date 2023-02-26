@@ -6,26 +6,29 @@
 	<meta name="keywords" content="サイトをキーワードで説明">
 	<meta name="description" content="どんなサイトかを短い文章で説明">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
 	<link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="/static/css/M_top.css">
+	<link rel="stylesheet" href="/static/css/M_top.css">
 	<title>トップページ</title>
 </head>
 
-<body style="background-color: #fff1dc;">
+<body style="background-color: #3A98B9">
 	<article class="top">
 		<section class="room">
-			<h1>俺の"部屋"</h1>
+			<h1 id="font">俺の"部屋"</h1>
 		</section>
 
 
 		<section class="clip">
 			<form action="/login" method="post">
-			<h1>ログインID<input type="text" name="post_id" id="" size="50"></h1> 
-			<h1>PW <input type="text" name="post_pass" id="" size="50"></h1>
-		
+				<h1>ログインID<input type="text" name="post_id" id="" size="50"></h1>
+				<h1>パスワード <input type="text" name="post_pass" id="" size="50"></h1>
+
 				<input type="submit" value="ログイン">
 			</form>
-			<h1>新規会員登録は<a href="http://127.0.0.1:9000/regist_top">こちら</a></h1> 
+			<h1>新規会員登録は<a href="http://127.0.0.1:9000/regist_top">こちら</a></h1>
 		</section>
 	</article>
 
