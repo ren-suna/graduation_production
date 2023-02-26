@@ -14,6 +14,7 @@ def top():
 
 @app.route("/right")
 def right():
+    conn = sqlite3.connect('graduate.db')
     return render_template("R.main_right.html")
 
 @app.route("/regist_top")
