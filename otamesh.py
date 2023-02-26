@@ -78,7 +78,7 @@ def login_post():
         print("ログインに成功しました")
 
     conn.close()
-    return render_template("R.main.html", name=result[0][1] )
+    return render_template("R.main.html", name=result[0][1])
 
 
 
@@ -102,13 +102,14 @@ def furniture():
     conn = sqlite3.connect('graduate.db')
     v1 = request.form.get('f_name')
     v2 = request.form.get('f_vertical')
-    v3 = request.form.get('f_horizonrtal')
+    v3 = request.form.get('f_horizontal')
     v4 = request.form.get('f_height')
+    v5 = request.form.get('f_quantity')
     c = conn.cursor()
     
     print(v1)
 
-    c.execute('INSERT INTO my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height) VALUES (?,?,?,?)', (v1,v2,v3,v4))
+    c.execute('INSERT INTO my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?)', (v1,v2,v3,v4,v5))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
     conn.commit()
     conn.close()
