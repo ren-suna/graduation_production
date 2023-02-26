@@ -171,5 +171,23 @@ def furniture():
 #     conn.close()
 #     return "成功！"
 
+# ren.py追加
+@app.route("/right2")
+def main_right():
+    conn=sqlite3.connect('graduate.db')
+    # カーソル生成
+    c=conn.cursor()
+    # SQLを実行
+    user_id = session['user_id']
+    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu)
+    # DBセッション終了
+    conn.close()
+
+    return render_template("R.main_right.html",furnitutes=py_fu)
+
+
 if __name__ =="__main__":
     app.run(debug=True,port=9000)
