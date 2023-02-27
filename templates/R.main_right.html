@@ -8,70 +8,32 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-
-        td {
-            border: solid #000;
-            padding: 10px;
-        }
-
-        th {
-            text-align: center;
-        }
-
-        td {
-            text-align: right;
-        }
-    </style>
 </head>
 
 <body>
     <h2>家具リスト</h2>
-    <table>
+    {% for i in my_furnitutes %}
+    <table border="0.5">
         <tr>
-            <th>名前</th>
-            <th>縦</th>
-            <th>横</th>
-            <th>数量</th>
-        </tr>
-        {% for i in furnitutes %}
+            <td>名称</td>
+            <td>縦</td>
+            <td>横</td>
+            <td>数量</td>
+        </tr><br>
         <tr>
-            <td>{{i[2]}}</td>
-            <td>{{i[3]}}</td>
-            <td>{{i[4]}}</td>
-            <td>{{i[5]}}</td>
-            <td>
-                <form action="/furnitures">
-                    <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
-                    <input type="submit" value="編集">
-                </form>
-            </td>
-            <td>
-                <form action="/delete">
-                    <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
-                    <input type="submit" value="削除">
-                </form>
-            </td>
+            <td>{{i[2]}}</td><td>{{i[3]}}</td><td>{{i[4]}}</td><td>{{i[5]}}</td>
         </tr>
-        {% endfor %}
-
-    </table>
-
-    <form action="/add" method="post">
-        <input type="text" name="post_task">
-        <input type="date" name="post_dead">
-        <input type="submit" value="追加" name="post_add">
+        
+    <form action="#">
+        <p><input type="checkbox" name="os" value="win7">冷蔵庫 <button>編集</button></p>
+        <p><input type="checkbox" name="os" value="win8">洗濯機 <button>編集</button></p>
+        <p><input type="checkbox" name="os" value="win10">ベット <button>編集</button></p>
+        <p><input type="submit" value="削除"></p>
     </form>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
+    {% endfor %}
 </body>
 
 </html>
