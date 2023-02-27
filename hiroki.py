@@ -10,7 +10,7 @@ app=Flask(__name__)
 @app.route("/")
 def test():
     print(test)
-    return render_template("H_madorizuadd.html")
+    return render_template("R.main.html")
 
 @app.route('/upload', methods=["POST"])
 def do_upload():

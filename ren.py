@@ -101,14 +101,14 @@ def login_post():
     # # カーソル生成
     # c=conn.cursor()
     # # SQLを実行
-    user_id = session['user_id']
+    # user_id = session['user_id']
+    user_id = 133
     c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
     # Pythonで受け取る
     py_fu=c.fetchall()
     print(py_fu)
     # DBセッション終了
     conn.close()
-
     return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
 
 
