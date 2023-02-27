@@ -11,21 +11,21 @@ def furnitures():
     return render_template("M.edit.html")
 
 
-@app.route("/right")
-def main_right():
-    conn=sqlite3.connect('graduate.db')
-    # カーソル生成
-    c=conn.cursor()
-    # SQLを実行
-    py_id="1"
-    c.execute('select * from my_furnitutes where id=?',(py_id,))
-    # Pythonで受け取る
-    py_fu=c.fetchall()
-    print(py_fu)
-    # DBセッション終了
-    conn.close()
+# @app.route("/right")
+# def main_right():
+#     conn=sqlite3.connect('graduate.db')
+#     # カーソル生成
+#     c=conn.cursor()
+#     # SQLを実行
+#     py_id="1"
+#     c.execute('select * from my_furnitutes where id=?',(py_id,))
+#     # Pythonで受け取る
+#     py_fu=c.fetchall()
+#     print(py_fu)
+#     # DBセッション終了
+#     conn.close()
 
-    return render_template("R.main_right.html",furnitutes=py_fu)
+#     return render_template("R.main_right.html",furnitutes=py_fu)
 
 
 

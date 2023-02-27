@@ -38,8 +38,20 @@ def r_regist():
     return render_template("H_sunpouadd.html")
 
 @app.route("/save_s")
-def save_s():
-    return render_template("R.main.html")
+def main_right():
+    conn=sqlite3.connect('graduate.db')
+    # カーソル生成
+    c=conn.cursor()
+    # SQLを実行
+    user_id = session['user_id']
+    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu)
+    # DBセッション終了
+    conn.close()
+
+    return render_template("R.main.html",furnitutes=py_fu)
 
 
 # 以下ユーザー登録
@@ -84,8 +96,24 @@ def login_post():
         print("ログインに成功しました")
     
     print(session['user_id'])
+    # conn.close()
+    # return render_template("R.main.html", name=result[0][1])
+
+    # def main_right():
+    # conn=sqlite3.connect('graduate.db')
+    # # カーソル生成
+    # c=conn.cursor()
+    # SQLを実行
+    user_id = session['user_id']
+    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu)
+    # DBセッション終了
     conn.close()
-    return render_template("R.main.html", name=result[0][1])
+
+    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
+
 
 # @app.route('/bbs')
 # def bbs():
@@ -172,21 +200,21 @@ def furniture():
 #     return "成功！"
 
 # ren.py追加
-@app.route("/right2")
-def main_right():
-    conn=sqlite3.connect('graduate.db')
-    # カーソル生成
-    c=conn.cursor()
-    # SQLを実行
-    user_id = session['user_id']
-    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
-    # Pythonで受け取る
-    py_fu=c.fetchall()
-    print(py_fu)
-    # DBセッション終了
-    conn.close()
+# @app.route("/right2")
+# def main_right():
+#     conn=sqlite3.connect('graduate.db')
+#     # カーソル生成
+#     c=conn.cursor()
+#     # SQLを実行
+#     user_id = session['user_id']
+#     c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+#     # Pythonで受け取る
+#     py_fu=c.fetchall()
+#     print(py_fu)
+#     # DBセッション終了
+#     conn.close()
 
-    return render_template("R.main_right.html",furnitutes=py_fu)
+#     return render_template("R.main_right.html",furnitutes=py_fu)
 
 
 if __name__ =="__main__":
