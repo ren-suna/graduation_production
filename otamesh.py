@@ -3,9 +3,12 @@ from flask import Flask
 from flask import render_template
 from flask import redirect
 import sqlite3
-from flask import request
+from flask import request,session
 # flaskを使うときのお約束
 app = Flask(__name__)
+
+app.secret_key = 'sunabaco'
+
 
 @app.route("/top")
 def top():
@@ -83,30 +86,30 @@ def login_post():
     c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
     result = c.fetchall()
     print(result)
-    
+    session["user_id"] = result[0][0]
     if result == []:
         return redirect("/top")
     else:
         print("ログインに成功しました")
-    
+   
     print(session['user_id'])
-    # conn.close()
-    # return render_template("R.main.html", name=result[0][1])
-
-    # def main_right():
-    # conn=sqlite3.connect('graduate.db')
-    # # カーソル生成
-    # c=conn.cursor()
-    # SQLを実行
-    user_id = session['user_id']
-    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
-    # Pythonで受け取る
-    py_fu=c.fetchall()
-    print(py_fu)
-    # DBセッション終了
     conn.close()
+    return render_template("R.main.html", name=result[0][1])
 
-    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
+    # # def main_right():
+    # # conn=sqlite3.connect('graduate.db')
+    # # # カーソル生成
+    # # c=conn.cursor()
+    # # SQLを実行
+    # user_id = session['user_id']
+    # c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # # Pythonで受け取る
+    # py_fu=c.fetchall()
+    # print(py_fu)
+    # # DBセッション終了
+    # conn.close()
+
+    # return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
 
 
 
