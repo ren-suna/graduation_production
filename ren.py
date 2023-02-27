@@ -10,23 +10,21 @@ app = Flask(__name__)
 app.secret_key = 'sunabaco'
 
 
-@app.route('/main')
-def myname():
-    if 'user_id' in session :
-        user_id = session['user_id']
-        conn = sqlite3.connect('graduate.db')
-        c = conn.cursor()
-        # # DBにアクセスしてログインしているユーザ名と投稿内容を取得する
-        # クッキーから取得したuser_idを使用してuserテーブルのnameを取得
-        c.execute("select name from users where USER_ID = ?", (user_id,))
-        # fetchoneはタプル型
-        user_info = c.fetchone()
-        # user_infoの中身を確認
+# @app.route("/right")
+# def main_right():
+#     conn=sqlite3.connect('graduate.db')
+#     # カーソル生成
+#     c=conn.cursor()
+#     # SQLを実行
+#     py_id="1"
+#     c.execute('select * from my_furnitutes where id=?',(py_id,))
+#     # Pythonで受け取る
+#     py_fu=c.fetchall()
+#     print(py_fu)
+#     # DBセッション終了
+#     conn.close()
 
-        c.execute("select id,comment,time from bbs where userid = ? and del_flag = 0 order by id", (user_id,))
-        comment_list = []
-        for row in c.fetchall():
-            comment_list.append({"id": row[0], "comment": row[1], "time":row[2]})
+#     return render_template("R.main_right.html",furnitutes=py_fu)
 
         c.close()
         return render_template('bbs.html' , user_info = user_info , comment_list = comment_list)

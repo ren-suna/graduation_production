@@ -33,3 +33,30 @@
   text-align: center;
   background-color: #3A98B9;
 }
+
+/* header css */
+.navbar-brand1 {
+	font-family: 'Yuji Mai', serif;
+  font-size: 150%;
+  color:inherit;
+  text-decoration: none;
+}
+
+
+/* furnituter */
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: solid #000;
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: right;
+}

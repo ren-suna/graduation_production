@@ -18,19 +18,19 @@
     {% block content %}
     <!-- <div class="container"> -->
     <div class="row">
-        <div id="l" class="col-lg-9" style="
+        <div id="l" class="col-lg-6" style="
     padding-right: 0px">
             <div class="mypage">
                 <h2>{{name}}さんのマイページ</h2>
                 <div class="d-grid gap-2 d-md-block">
                     <form action="/rooms" method="get">
-                    <button class="btn btn-primary" type="submit">部屋追加</button>
+                        <button class="btn btn-primary" type="submit">部屋追加</button>
                     </form>
                     <form action="/furnitures" method="get">
-                    <button class="btn btn-primary" type="submit">家具追加</button>
+                        <button class="btn btn-primary" type="submit">家具追加</button>
                     </form>
                     <button class="btn btn-primary" type="button">シミュレーション</button>
-                    
+
                 </div>
             </div>
 
@@ -84,8 +84,37 @@
                 </div>
             </div>
         </div>
-        <div id="r" class="col-lg-3">
-            <iframe src="/right" width="100%" height="100%"></iframe>
+
+        <div id="r" class="col-lg-6">
+            <h2>家具リスト</h2>
+            <table>
+                <tr>
+                    <th>名前</th>
+                    <th>縦</th>
+                    <th>横</th>
+                    <th>数量</th>
+                </tr>
+                {% for i in furnitutes %}
+                <tr>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td>{{i[4]}}</td>
+                    <td>{{i[5]}}</td>
+                    <td>
+                        <form action="/furnitures">
+                            <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
+                            <input type="submit" value="編集">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete">
+                            <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
+                            <input type="submit" value="削除">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
     {% endblock %}
