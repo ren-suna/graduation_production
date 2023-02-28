@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家具編集</title>
+</head>
+
+<body style="background-color: rgb(214, 241, 175);">
+    {% extends 'R.header.html' %}
+    {% block content %}
+
+    <article>
+        <div>
+            <form action="/add_fun">
+                <table>
+                    <tr>
+                        <td>名称</td>
+                        <td>縦</td>
+                        <td>横</td>
+                        <td>高さ</td>
+                        <td>数量</td>
+                    </tr><br>
+
+                    {% for i in furnitutes %}
+                    <tr>
+                        <td>{{i[2]}}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+                        <td>{{i[5]}}</td>
+                        <td>{{i[6]}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="text" name="f_name" value="{{i[2]}}"></td>
+                        <td><input type="text" name="f_vertical" value="{{i[3]}}"></td>
+                        <td><input type="text" name="f_horizontal" value="{{i[4]}}"></td>
+                        <td><input type="text" name="f_height" value="{{i[5]}}"></td>
+                        <td><select name="f_quantity">
+                                <option value="">数量を選択</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select></td>
+                    </tr>
+                    {% endfor %}
+
+
+                </table>
+
+                <form action="/tomain">
+                    <!-- <input type="text" name="post_task">
+                    <input type="date" name="post_dead"> -->
+                    <input type="submit" value="保存" name="post_add">
+                </form>
+
+                <!-- <input id="save" type="submit" value="保存"></input> -->
+            </form>
+            {% endblock %}
+
+
+        </div>
+
+    </article>
+    <script>
+        document.getElementById("save").addEventListener("click", saved);
+        function saved() {
+            alert("保存しました");
+        }
+    </script>
+</body>
+
+</html>

@@ -92,6 +92,7 @@
                     <th>名前</th>
                     <th>縦</th>
                     <th>横</th>
+                    <th>高さ</th>
                     <th>数量</th>
                 </tr>
                 {% for i in furnitutes %}
@@ -100,8 +101,9 @@
                     <td>{{i[3]}}</td>
                     <td>{{i[4]}}</td>
                     <td>{{i[5]}}</td>
+                    <td>{{i[6]}}</td>
                     <td>
-                        <form action="/furnitures">
+                        <form action="/add_fun">
                             <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
                             <input type="submit" value="編集">
                         </form>
