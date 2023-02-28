@@ -122,7 +122,11 @@ def login_post():
 # 以下家具編集
 @app.route("/edit_f")
 def edit_f():
+    print(session['user_id'])
     return render_template("M.edit.html")
+
+
+
 
 @app.route("/regist_f", methods=["POST"])
 def furniture():
@@ -135,6 +139,7 @@ def furniture():
     c = conn.cursor()
     
     print(v1)
+    print(session['user_id'])
 
     c.execute('INSERT INTO my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?)', (v1,v2,v3,v4,v5))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
@@ -142,6 +147,9 @@ def furniture():
     conn.close()
     
     return render_template("R.main.html")
+
+
+
 
 # ↑上は起動してる
 # 以下メモとして使用
