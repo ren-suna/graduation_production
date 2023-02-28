@@ -107,11 +107,10 @@ def login_post():
     # Pythonで受け取る
     py_fu=c.fetchall()
     print(py_fu)
+    # print(py_fu[0][8])
     # DBセッション終了
     conn.close()
     return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
-
-
 
 
 # @app.route('/main')

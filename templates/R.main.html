@@ -30,7 +30,6 @@
                         <button class="btn btn-primary" type="submit">家具追加</button>
                     </form>
                     <button class="btn btn-primary" type="button">シミュレーション</button>
-
                 </div>
             </div>
 
@@ -39,18 +38,19 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         {% for i in furnitutes %}
+                        {% print(i[8]) %}
                         <div class="card text-center border-secondary mb-2" style="width: 18rem;">
-                            <a href="{{i[8]}}"
+                            <a href="../static/img/mizu.png"
                             data-lightbox="abc" data-title="写真拡大">
                             <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                            <a href="{{[8]}}"
+                            <a href="../static/img/mizu.png"
                                 data-lightbox="abc" data-title="写真拡大">
                                 <img class="card-img-top"
-                                    src="{{[8]}}"
+                                    src="../static/img/mizu.png"
                                     alt="">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{[7]}}</h5>
+                                <h5 class="card-title">{{i[7]}}</h5>
                                 <a href="#" class="btn btn-primary">編集</a>
                                 <a href="#" class="btn btn-primary">削除</a>
                             </div>
