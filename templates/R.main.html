@@ -38,15 +38,14 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         {% for i in furnitutes %}
-                        {% print(i[8]) %}
                         <div class="card text-center border-secondary mb-2" style="width: 18rem;">
-                            <a href="../static/img/mizu.png"
+                            <a href="../{{i[8]}}"
                             data-lightbox="abc" data-title="写真拡大">
                             <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                            <a href="../static/img/mizu.png"
+                            <a href="../{{i[8]}}"
                                 data-lightbox="abc" data-title="写真拡大">
                                 <img class="card-img-top"
-                                    src="../static/img/mizu.png"
+                                    src="../{{i[8]}}"
                                     alt="">
                             </a>
                             <div class="card-body">

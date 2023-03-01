@@ -10,7 +10,7 @@ app=Flask(__name__)
 @app.route("/")
 def test():
     print(test)
-    return render_template("R.main.html")
+    return render_template("H_madorizuadd.html")
 
 @app.route('/upload', methods=["POST"])
 def do_upload():
@@ -18,6 +18,8 @@ def do_upload():
     save_path = get_save_path()
     filename = upload.filename
     test = os.path.join(save_path,filename)
+    test2 = test.replace('\\','/')
+    print(test2)
     upload.save(os.path.join(save_path,filename))
 
     # user_id = session['user_id']
@@ -25,7 +27,7 @@ def do_upload():
     conn = sqlite3.connect('graduate.db')
     c = conn.cursor()
     # 上記の filename 変数ここで使うよ
-    c.execute("INSERT INTO my_furnitutes (USER_ID,room_name,room_picture) VALUES(?,?,?)",(user_id,filename,test))
+    c.execute("INSERT INTO my_furnitutes (USER_ID,room_name,room_picture) VALUES(?,?,?)",(user_id,filename,test2))
     conn.commit()
     conn.close()
     return redirect ('/')
