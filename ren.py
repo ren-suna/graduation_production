@@ -242,30 +242,14 @@ def furniture():
 @app.route("/add_fun")
 def update():
     conn = sqlite3.connect('graduate.db')
-    # v1 = request.form.get('post_pass')
-    # v2 = request.form.get('post_id')
     
     c = conn.cursor()
-    # print(v1)
-    # print(v2)
-    # 以下未完成
-    # c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
-    # conn.close()
-    # return render_template("R.main.html", name=result[0][1])
-
-    # def main_right():
-    # conn=sqlite3.connect('graduate.db')
-    # # カーソル生成
-    # c=conn.cursor()
     # # SQLを実行
     user_id = session['user_id']
     c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
-    # result = c.fetchall()
-    # print(result)
-
     # Pythonで受け取る
     py_fu=c.fetchall()
-    print(py_fu)
+    print(py_fu[0])
     # DBセッション終了
     conn.close()
 
@@ -273,10 +257,10 @@ def update():
 
 
 # 編集した家具情報をデータベースへUPDATE------------------
-@app.route("/add_fun2")
+@app.route("/add_fun2", methods=["POST"])
 def update2():
     conn = sqlite3.connect('graduate.db')
-    v1 = request.form.get('f_name')
+    v1 = request.form.get('name')
     v2 = request.form.get('f_vertical')
     v3 = request.form.get('f_horizontal')
     v4 = request.form.get('f_height')
@@ -284,24 +268,29 @@ def update2():
     c = conn.cursor()
     
     print(v1)
+    print(v2)
 
-    c.execute('INSERT INTO my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?)', (v1,v2,v3,v4,v5))
+    user_id = session['user_id']
+
+    # c.execute('UPDATE my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?)', (v1,v2,v3,v4,v5))  
+    c.execute('update my_furnitutes set furniture_name=? ,furniture_vertical=? ,furniture_horizontal=? ,furniture_height=? ,furniture_quantity=? where USER_ID=?' ,(v1,v2,v3,v4,v5,user_id))
+
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
     conn.commit()
 
-    c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
-    result = c.fetchall()
+    # c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
+    # result = c.fetchall()
 
-    user_id = session['user_id']
-    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
-    # Pythonで受け取る
-    py_fu=c.fetchall()
-    print(py_fu)
+    # user_id = session['user_id']
+    # c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # # Pythonで受け取る
+    # py_fu=c.fetchall()
+    # print(py_fu)
     # DBセッション終了
     conn.close()
 
-    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
-
+    # return render_template("R.main.html")
+    return redirect ('/add_fun')
 
 
 if __name__ =="__main__":
