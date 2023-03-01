@@ -14,7 +14,7 @@
 
     <article>
         <div>
-            <form action="/add_fun">
+            <form action="/add_fun2" method="post">
                 <table>
                     <tr>
                         <td>名称</td>
@@ -34,10 +34,10 @@
                     </tr>
 
                     <tr>
-                        <td><input type="text" name="f_name" value="{{i[2]}}"></td>
-                        <td><input type="text" name="f_vertical" value="{{i[3]}}"></td>
-                        <td><input type="text" name="f_horizontal" value="{{i[4]}}"></td>
-                        <td><input type="text" name="f_height" value="{{i[5]}}"></td>
+                        <td><input type="text" name="name" placeholder="{{i[2]}}" id=""></td>
+                        <td><input type="text" name="f_vertical" placeholder="{{i[3]}}" id=""></td>
+                        <td><input type="text" name="f_horizontal" placeholder="{{i[4]}}" id=""></td>
+                        <td><input type="text" name="f_height" placeholder="{{i[5]}}" id=""></td>
                         <td><select name="f_quantity">
                                 <option value="">数量を選択</option>
                                 <option>1</option>
@@ -48,15 +48,13 @@
                             </select></td>
                     </tr>
                     {% endfor %}
-
-
                 </table>
 
-                <form action="/tomain">
-                    <!-- <input type="text" name="post_task">
+                <!-- <form action="/add_fun2"> -->
+                <!-- <input type="text" name="post_task">
                     <input type="date" name="post_dead"> -->
-                    <input type="submit" value="保存" name="post_add">
-                </form>
+                <input type="submit" value="保存" name="post_add">
+                <!-- </form> -->
 
                 <!-- <input id="save" type="submit" value="保存"></input> -->
             </form>
