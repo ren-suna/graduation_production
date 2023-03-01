@@ -71,19 +71,21 @@ def regist_post():
     return render_template("M_top.html")
 
 
-
 # 以下ログイン
 @app.route("/login", methods=["POST"])
 def login_post():
     conn = sqlite3.connect('graduate.db')
-    v1 = request.form.get('post_pass')
-    v2 = request.form.get('post_id')
-    
+    p1 = request.form.get('post_pass')
+    p2 = request.form.get('post_id')
+
+    session["pass"]= p1
+    session["id"]= p2
+
     c = conn.cursor()
-    print(v1)
-    print(v2)
+    print(p1)
+    print(p2)
     # 以下未完成
-    c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
+    c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(p1,p2))
     result = c.fetchall()
     print(result)
     session["user_id"] = result[0][0]
@@ -108,6 +110,24 @@ def login_post():
 
 
 
+# 以下マイページへの遷移
+@app.route("/header_top", methods=["GET"])
+def header_top():
+    conn = sqlite3.connect('graduate.db')
+    c = conn.cursor()
+    print(session["pass"])
+    c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(session["pass"],session["id"]))
+    result = c.fetchall()
+
+    user_id = session['user_id']
+    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu)
+    # DBセッション終了
+    conn.close()
+
+    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
 
 # @app.route('/main')
 # def main():
@@ -122,7 +142,11 @@ def login_post():
 # 以下家具編集
 @app.route("/edit_f")
 def edit_f():
+    print(session['user_id'])
     return render_template("M.edit.html")
+
+
+
 
 @app.route("/regist_f", methods=["POST"])
 def furniture():
@@ -135,13 +159,17 @@ def furniture():
     c = conn.cursor()
     
     print(v1)
+    print(session['user_id'])
 
-    c.execute('INSERT INTO my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?)', (v1,v2,v3,v4,v5))
+    c.execute('INSERT INTO my_furnitutes (USER_ID,furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?,?)', (session['user_id'],v1,v2,v3,v4,v5,))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
     conn.commit()
     conn.close()
     
-    return render_template("R.main.html")
+    return redirect("/header_top")
+
+
+
 
 # ↑上は起動してる
 # 以下メモとして使用
