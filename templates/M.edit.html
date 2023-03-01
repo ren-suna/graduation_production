@@ -9,6 +9,9 @@
 </head>
 
 <body style="background-color: #fff1dc;">
+    {% extends 'R.header.html' %}
+    {% block content %}
+
     <article>
         <div>
             <form action="/regist_f" method="post">
@@ -85,6 +88,9 @@
         </div>
 
     </article>
+
+    {% endblock %}
+
     <script>
         document.getElementById("save").addEventListener("click", saved);
         function saved() {

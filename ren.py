@@ -112,16 +112,47 @@ def login_post():
     # print(py_fu[0][8])
     # DBセッション終了
     conn.close()
-    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu,)
+
+    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
 
 
-# @app.route('/main')
-# def main():
-#     conn = sqlite3.connect('graduate.db')
-#     c = conn.cursor()
-#     c.execute('SELECT * FROM users WHERE name')
-#     result = c.fetchall()
-#     py_name = int(result)
+# 以下編集後メインに戻る
+@app.route("/tomain")
+def tomain():
+    conn = sqlite3.connect('graduate.db')
+    # v1 = request.form.get('post_pass')
+    # v2 = request.form.get('post_id')
+    
+    c = conn.cursor()
+    # print(v1)
+    # print(v2)
+    c.execute('SELECT * FROM users WHERE ID = ?',(user_id,))
+    result = c.fetchall()
+    print(result)
+    session["user_id"] = result[0][0]
+    # if result == []:
+    #     return redirect("/top")
+    # else:
+    #     print("ログインに成功しました")
+   
+    print(session['user_id'])
+    # conn.close()
+    # return render_template("R.main.html", name=result[0][1])
+
+    # def main_right():
+    # conn=sqlite3.connect('graduate.db')
+    # # カーソル生成
+    # c=conn.cursor()
+    # # SQLを実行
+    user_id = session['user_id']
+    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu)
+    # DBセッション終了
+    conn.close()
+
+    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
 
 
 
@@ -209,6 +240,61 @@ def furniture():
 #     conn.close()
 
 #     return render_template("R.main_right.html",furnitutes=py_fu)
+
+
+# 家具編集画面へ遷移-------------------
+@app.route("/add_fun")
+def update():
+    conn = sqlite3.connect('graduate.db')
+    
+    c = conn.cursor()
+    # # SQLを実行
+    user_id = session['user_id']
+    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu[0])
+    # DBセッション終了
+    conn.close()
+
+    return render_template("R.edit_update.html", furnitutes=py_fu)
+
+
+# 編集した家具情報をデータベースへUPDATE------------------
+@app.route("/add_fun2", methods=["POST"])
+def update2():
+    conn = sqlite3.connect('graduate.db')
+    v1 = request.form.get('name')
+    v2 = request.form.get('f_vertical')
+    v3 = request.form.get('f_horizontal')
+    v4 = request.form.get('f_height')
+    v5 = request.form.get('f_quantity')
+    c = conn.cursor()
+    
+    print(v1)
+    print(v2)
+
+    user_id = session['user_id']
+
+    # c.execute('UPDATE my_furnitutes (furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?)', (v1,v2,v3,v4,v5))  
+    c.execute('update my_furnitutes set furniture_name=? ,furniture_vertical=? ,furniture_horizontal=? ,furniture_height=? ,furniture_quantity=? where USER_ID=?' ,(v1,v2,v3,v4,v5,user_id))
+
+    #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
+    conn.commit()
+
+    # c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(v1,v2))
+    # result = c.fetchall()
+
+    # user_id = session['user_id']
+    # c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+    # # Pythonで受け取る
+    # py_fu=c.fetchall()
+    # print(py_fu)
+    # DBセッション終了
+    conn.close()
+
+    # return render_template("R.main.html")
+    return redirect ('/add_fun')
 
 
 if __name__ =="__main__":
