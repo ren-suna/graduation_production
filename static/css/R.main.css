@@ -58,9 +58,10 @@ body {
 /* furnituter */
 table {
     border-collapse: collapse;
-}
-
-td {
+  }
+  
+  td {
+    background-color: #fff;
     border: solid #000;
     padding: 10px;
 }
