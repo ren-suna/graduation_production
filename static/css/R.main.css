@@ -72,3 +72,10 @@ th {
 td {
     text-align: right;
 }
+
+.navbar-brand1 {
+  font-family: 'Rajdhani', sans-serif;
+}
+.navbar-brand {
+  font-family: 'Rajdhani', sans-serif;
+}
