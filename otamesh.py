@@ -2,7 +2,7 @@
 from flask import Flask
 from flask import render_template
 from flask import redirect
-import sqlite3
+import sqlite3,os
 from flask import request,session
 # flaskを使うときのお約束
 app = Flask(__name__)
@@ -279,15 +279,15 @@ def do_upload():
     print(test2)
     upload.save(os.path.join(save_path,filename))
 
-    # user_id = session['user_id']
-    user_id = 133
+    user_id = session['user_id']
+    # user_id = 133
     conn = sqlite3.connect('graduate.db')
     c = conn.cursor()
     # 上記の filename 変数ここで使うよ
     c.execute("INSERT INTO my_furnitutes (USER_ID,room_name,room_picture) VALUES(?,?,?)",(user_id,filename,test2))
     conn.commit()
     conn.close()
-    return redirect ('/')
+    return redirect("/header_top")
 
 def get_save_path():
     path_dir = "static\img"
