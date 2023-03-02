@@ -5,10 +5,8 @@ article{
 }
 
 #font {
-	font-size: 200%;
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 300%;
 }
 
-#in {
-	width: 10rem;
-	padding: 10px;
-}
+

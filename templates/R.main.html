@@ -31,6 +31,7 @@
                     <form action="#" method="get">
                         <button class="btn btn-primary" type="button">シミュレーション</button>
                     </form>
+
                 </div>
             </div>
 
@@ -38,48 +39,52 @@
                 <h2>部屋一覧</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
+                        {% for i in furnitutes %}
                         <div class="card text-center border-secondary mb-2" style="width: 18rem;">
+                            <a href="../{{i[8]}}"
+                            data-lightbox="abc" data-title="写真拡大">
                             <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                            <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
+                            <a href="../{{i[8]}}"
                                 data-lightbox="abc" data-title="写真拡大">
                                 <img class="card-img-top"
-                                    src=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
+                                    src="../{{i[8]}}"
                                     alt="">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">部屋名</h5>
+                                <h5 class="card-title">{{i[7]}}</h5>
                                 <a href="#" class="btn btn-primary">編集</a>
                                 <a href="#" class="btn btn-primary">削除</a>
                             </div>
                         </div>
-                        <div class="card text-center border-secondary mb-2" style="width: 18rem;">
+                        {% endfor %}
+                        <!-- <div class="card text-center border-secondary mb-2" style="width: 18rem;"> -->
                             <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                            <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
+                            <!-- <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
+                                data-lightbox="abc" data-title="写真拡大"> -->
+                                <!-- <img class="card-img-top"
+                                    src=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
+                                    alt=""> -->
+                            <!-- </a> -->
+                            <!-- <div class="card-body"> -->
+                                <!-- <h5 class="card-title">部屋名</h5> -->
+                                <!-- <a href="#" class="btn btn-primary">編集</a> -->
+                                <!-- <a href="#" class="btn btn-primary">削除</a> -->
+                            <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="card text-center border-secondary mb-2" style="width: 18rem;"> -->
+                            <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
+                            <!-- <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
                                 data-lightbox="abc" data-title="写真拡大">
                                 <img class="card-img-top"
                                     src=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                    alt="">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">部屋名</h5>
-                                <a href="#" class="btn btn-primary">編集</a>
-                                <a href="#" class="btn btn-primary">削除</a>
-                            </div>
-                        </div>
-                        <div class="card text-center border-secondary mb-2" style="width: 18rem;">
-                            <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                            <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                data-lightbox="abc" data-title="写真拡大">
-                                <img class="card-img-top"
-                                    src=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                    alt="">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">部屋名</h5>
-                                <a href="#" class="btn btn-primary">編集</a>
-                                <a href="#" class="btn btn-primary">削除</a>
-                            </div>
-                        </div>
+                                    alt=""> -->
+                            <!-- </a> -->
+                            <!-- <div class="card-body"> -->
+                                <!-- <h5 class="card-title">部屋名</h5> -->
+                                <!-- <a href="#" class="btn btn-primary">編集</a> -->
+                                <!-- <a href="#" class="btn btn-primary">削除</a> -->
+                            <!-- </div> -->
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
