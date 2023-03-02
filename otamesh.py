@@ -82,19 +82,15 @@ def login_post():
     session["id"]= p2
 
     c = conn.cursor()
-    print(p1)
-    print(p2)
-    # 以下未完成
+    
     c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(p1,p2))
     result = c.fetchall()
-    print(result)
     session["user_id"] = result[0][0]
     if result == []:
         return redirect("/top")
     else:
         print("ログインに成功しました")
    
-    print(session['user_id'])
     # conn.close()
     # return render_template("R.main.html", name=result[0][1])
 
@@ -102,7 +98,6 @@ def login_post():
     c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
     # Pythonで受け取る
     py_fu=c.fetchall()
-    print(py_fu)
     # DBセッション終了
     conn.close()
 
@@ -115,7 +110,7 @@ def login_post():
 def header_top():
     conn = sqlite3.connect('graduate.db')
     c = conn.cursor()
-    print(session["pass"])
+
     c.execute('SELECT * FROM users WHERE password = ? and USER_ID = ?',(session["pass"],session["id"]))
     result = c.fetchall()
 
@@ -123,7 +118,6 @@ def header_top():
     c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
     # Pythonで受け取る
     py_fu=c.fetchall()
-    print(py_fu)
     # DBセッション終了
     conn.close()
 
@@ -157,9 +151,6 @@ def furniture():
     v4 = request.form.get('f_height')
     v5 = request.form.get('f_quantity')
     c = conn.cursor()
-    
-    print(v1)
-    print(session['user_id'])
 
     c.execute('INSERT INTO my_furnitutes (USER_ID,furniture_name,furniture_vertical,furniture_horizontal,furniture_height,furniture_quantity) VALUES (?,?,?,?,?,?)', (session['user_id'],v1,v2,v3,v4,v5,))
     #↓押し込む場合はcommit  py_task = c.fetchall()←引っ張ってくる場合はfetchall
