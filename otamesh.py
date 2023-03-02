@@ -268,6 +268,32 @@ def delete_r():
 
     return redirect("/header_top")
 
+# 画像をアップロードするよ
+@app.route('/upload', methods=["POST"])
+def do_upload():
+    upload = request.files['upload']
+    save_path = get_save_path()
+    filename = upload.filename
+    test = os.path.join(save_path,filename)
+    test2 = test.replace('\\','/')
+    print(test2)
+    upload.save(os.path.join(save_path,filename))
+
+    # user_id = session['user_id']
+    user_id = 133
+    conn = sqlite3.connect('graduate.db')
+    c = conn.cursor()
+    # 上記の filename 変数ここで使うよ
+    c.execute("INSERT INTO my_furnitutes (USER_ID,room_name,room_picture) VALUES(?,?,?)",(user_id,filename,test2))
+    conn.commit()
+    conn.close()
+    return redirect ('/')
+
+def get_save_path():
+    path_dir = "static\img"
+    return path_dir
+
+
 
 # ↑上は起動してる
 # 以下メモとして使用
