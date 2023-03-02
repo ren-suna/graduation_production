@@ -41,46 +41,22 @@
                     <div class="col">
                         {% for i in furnitutes %}
                         <div class="card text-center border-secondary mb-2" style="width: 18rem;">
+                            <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
                             <a href="../{{i[8]}}" data-lightbox="abc" data-title="写真拡大">
-                                <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                                <a href="../{{i[8]}}" data-lightbox="abc" data-title="写真拡大">
-                                    <img class="card-img-top" src="../{{i[8]}}" alt="">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{i[7]}}</h5>
-                                    <a href="#" class="btn btn-primary">編集</a>
-                                    <a href="#" class="btn btn-primary">削除</a>
-                                </div>
+                                <img class="card-img-top" src="../{{i[8]}}" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{i[7]}}</h5>
+                                <a href="#" class="btn btn-primary">編集</a>
+                                <form action="/delete_room" method="post">
+                                    <input style="display: none;" type="integer" name="room_id" value="{{i[0]}}">
+                                    <input type="submit" value="削除">
+                                </form>
+
+                                <!-- <a href="#" class="btn btn-primary">削除</a> -->
+                            </div>
                         </div>
                         {% endfor %}
-                        <!-- <div class="card text-center border-secondary mb-2" style="width: 18rem;"> -->
-                        <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                        <!-- <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                data-lightbox="abc" data-title="写真拡大"> -->
-                        <!-- <img class="card-img-top"
-                                    src=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                    alt=""> -->
-                        <!-- </a> -->
-                        <!-- <div class="card-body"> -->
-                        <!-- <h5 class="card-title">部屋名</h5> -->
-                        <!-- <a href="#" class="btn btn-primary">編集</a> -->
-                        <!-- <a href="#" class="btn btn-primary">削除</a> -->
-                        <!-- </div> -->
-                        <!-- </div> -->
-                        <!-- <div class="card text-center border-secondary mb-2" style="width: 18rem;"> -->
-                        <!-- 拡大表示用----画像をLightbox2で拡大できるようにする---- -->
-                        <!-- <a href=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                data-lightbox="abc" data-title="写真拡大">
-                                <img class="card-img-top"
-                                    src=" https://ieagent.jp/blog/wp-content/uploads/2019/01/f28de4bc431089166f73548b6ad99ec8.png"
-                                    alt=""> -->
-                        <!-- </a> -->
-                        <!-- <div class="card-body"> -->
-                        <!-- <h5 class="card-title">部屋名</h5> -->
-                        <!-- <a href="#" class="btn btn-primary">編集</a> -->
-                        <!-- <a href="#" class="btn btn-primary">削除</a> -->
-                        <!-- </div> -->
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>
