@@ -21,20 +21,21 @@
         <div id="l" class="col-lg-6" style="padding-right: 0px">
             <div class="mypage">
                 <h2>{{name}}さんのマイページ</h2>
-                <div class="d-grid gap-2 d-md-block">
+                <div id="btn">
                     <form action="/rooms" method="get">
                         <button class="btn btn-primary" type="submit">部屋追加</button>
                     </form>
                     <form action="/furnitures" method="get">
                         <button class="btn btn-primary" type="submit">家具追加</button>
                     </form>
-                    <button class="btn btn-primary" type="button">シミュレーション</button>
-
+                    <form action="#" method="get">
+                        <button class="btn btn-primary" type="button">シミュレーション</button>
+                    </form>
                 </div>
             </div>
 
-            <h2>部屋一覧</h2>
             <div class="room">
+                <h2>部屋一覧</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card text-center border-secondary mb-2" style="width: 18rem;">
@@ -83,8 +84,8 @@
                 </div>
             </div>
         </div>
-       
-        <div id="r" class="col-lg-6">
+
+        <div id="furniture" class="col-lg-6">
             <h2>家具リスト</h2>
             <table>
                 <tr>
@@ -102,7 +103,7 @@
                     <td>{{i[5]}}</td>
                     <td>{{i[6]}}</td>
                     <td>
-                        <form action="/add_fun">
+                        <form action="/add_fun" method="post">
                             <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
                             <input type="submit" value="編集">
                         </form>
@@ -114,11 +115,11 @@
                         </form>
                     </td>
                 </tr>
-            
                 {% endfor %}
+
             </table>
         </div>
-        
+
     </div>
     {% endblock %}
     <!-- </div> -->

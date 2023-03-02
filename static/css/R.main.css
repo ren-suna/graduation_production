@@ -16,13 +16,25 @@
   width: 30%;
 } */
 
+body {
+  font-family: 'Rajdhani', sans-serif;
+}
 
-#r {
-  background-color: yellowgreen;
+#btn {
+  display:flex;
+  justify-content: space-evenly
+}
+
+#furniture {
+  background-color: #E8D5C4;
+}
+
+.room {
+  background-color: #FFF1DC;
 }
 
 .mypage {
-  background-color: rgb(226, 238, 131);
+  background-color: #EEEEEE;
 }
 
 .navbar {

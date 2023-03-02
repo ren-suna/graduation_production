@@ -239,17 +239,23 @@ def furniture():
 
 
 # 家具編集画面へ遷移-------------------
-@app.route("/add_fun")
+@app.route("/add_fun" ,methods=["POST"])
 def update():
     conn = sqlite3.connect('graduate.db')
     
     c = conn.cursor()
     # # SQLを実行
+    f_name=request.form.get('name')
     user_id = session['user_id']
-    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+
+    # print(f_id)
+    print(user_id)
+    # c.execute('select * from my_furnitutes where USER_ID=? and furniture_name=?',(user_id,f_name,))
+    c.execute('select * from my_furnitutes where USER_ID=? ',(user_id,))
+
     # Pythonで受け取る
-    py_fu=c.fetchall()
-    print(py_fu[0])
+    py_fu=c.fetchone()
+    print(py_fu)
     # DBセッション終了
     conn.close()
 
