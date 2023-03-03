@@ -100,6 +100,16 @@ def login_post():
     c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
     # Pythonで受け取る
     py_fu=c.fetchall()
+
+    c.execute('select * from my_furnitutes where USER_ID=? and furniture_name IS NOT NULL',(user_id,))
+    # Pythonで受け取る
+    py_fu=c.fetchall()
+    print(py_fu)
+
+    c.execute('select * from my_furnitutes where USER_ID=? and room_name IS NOT NULL',(user_id,))
+    py_room=c.fetchall()
+    print(py_room)
+
     # roompass = py_fu[0][8].replace("\\","/")
     # print(roompass)
     # print(py_fu)
@@ -107,7 +117,7 @@ def login_post():
     # DBセッション終了
     conn.close()
 
-    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
+    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu,room=py_room)
 
 
 
@@ -121,14 +131,20 @@ def header_top():
     result = c.fetchall()
 
     user_id = session['user_id']
-    c.execute('select * from my_furnitutes where USER_ID=?',(user_id,))
+
+    c.execute('select * from my_furnitutes where USER_ID=? and furniture_name IS NOT NULL',(user_id,))
     # Pythonで受け取る
     py_fu=c.fetchall()
     print(py_fu)
+
+    c.execute('select * from my_furnitutes where USER_ID=? and room_name IS NOT NULL',(user_id,))
+    py_room=c.fetchall()
+    print(py_room)
+
     # DBセッション終了
     conn.close()
 
-    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu)
+    return render_template("R.main.html", name=result[0][1],furnitutes=py_fu,room=py_room)
 
 # @app.route('/main')
 # def main():
