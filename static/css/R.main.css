@@ -1,28 +1,25 @@
 @charset "UTF-8";
 
-/* .base {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 100vh;
-}
-.class1 {
-  width: 70%;
-}
- 
-.class2 {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-} */
-
 body {
   font-family: 'Rajdhani', sans-serif;
 }
 
-#btn {
+h2 {
+  text-align: center;
+  padding-top: 18px;
+}
+
+.col {
+  margin-left: 25%;
+}
+
+.btn {
   display:flex;
   justify-content: space-evenly
+}
+
+.btn btn-primary {
+  color: #3A98B9;
 }
 
 #furniture {
@@ -58,6 +55,7 @@ body {
 /* furnituter */
 table {
     border-collapse: collapse;
+    margin: 3px auto;
 }
 
 td {
@@ -68,10 +66,12 @@ td {
 
 th {
     text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+
 }
 
 td {
-    text-align: right;
+    text-align: center;
 }
 
 .navbar-brand1 {
