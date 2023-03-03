@@ -21,22 +21,22 @@
         <div id="l" class="col-lg-6" style="padding-right: 0px">
             <div class="mypage">
                 <h2>{{name}}さんのマイページ</h2>
-                <div id="btn">
+                <div class="btn">
                     <form action="/rooms" method="get">
-                        <button class="btn btn-primary" type="submit">部屋追加</button>
+                        <button class="btn btn-success" type="submit">部 屋 追 加</button>
                     </form>
                     <form action="/furnitures" method="get">
-                        <button class="btn btn-primary" type="submit">家具追加</button>
+                        <button class="btn btn-success" type="submit">家 具 追 加</button>
                     </form>
                     <form action="#" method="get">
-                        <button class="btn btn-primary" type="button">シミュレーション</button>
+                        <button class="btn btn-secondary" type="button">シミュレーション</button>
                     </form>
 
                 </div>
             </div>
 
             <div class="room">
-                <h2>部屋一覧</h2>
+                <h2>部 屋 一 覧</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         {% for i in room %}
@@ -47,11 +47,16 @@
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{i[7]}}</h5>
-                                <a href="#" class="btn btn-primary">編集</a>
-                                <form action="/delete_room" method="post">
-                                    <input style="display: none;" type="integer" name="room_id" value="{{i[0]}}">
-                                    <input type="submit" value="削除">
-                                </form>
+                                <div class="btn">
+                                    <form action="" method="post">
+                                        <input style="display: none;" type="integer" name="room_id" value="{{i[0]}}">
+                                        <input type="submit" value="編集">
+                                    </form>
+                                    <form action="/delete_room" method="post">
+                                        <input style="display: none;" type="integer" name="room_id" value="{{i[0]}}">
+                                        <input type="submit" value="削除">
+                                    </form>
+                                </div>
 
                                 <!-- <a href="#" class="btn btn-primary">削除</a> -->
                             </div>
@@ -76,10 +81,10 @@
                 {% for i in furnitutes %}
                 <tr>
                     <td>{{i[2]}}</td>
-                    <td>{{i[3]}}</td>
-                    <td>{{i[4]}}</td>
-                    <td>{{i[5]}}</td>
-                    <td>{{i[6]}}</td>
+                    <td>{{i[3]}} cm</td>
+                    <td>{{i[4]}} cm</td>
+                    <td>{{i[5]}} cm</td>
+                    <td>{{i[6]}} 個</td>
                     <td>
                         <form action="/UPDATE_fun" method="post">
                             <input style="display: none;" type="integer" name="post_id" value="{{i[0]}}">
