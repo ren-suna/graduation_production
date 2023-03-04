@@ -288,7 +288,7 @@ def delete_r():
 @app.route('/upload', methods=["POST"])
 def do_upload():
     upload = request.files['upload']
-    save_path = get_save_path()
+    save_path = get_save_path()  #ファイルの場所を取ってくる
     filename = upload.filename
     test = os.path.join(save_path,filename)
     test2 = test.replace('\\','/')
